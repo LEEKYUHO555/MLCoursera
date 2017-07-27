@@ -21,11 +21,19 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for iter = 1:size(X,1)
+  min = sum((X(iter,:) - centroids(1,:)).^2);
+  minidx = 1;
+  for jter = 1:K
+    tempmin = sum((X(iter,:) - centroids(jter,:)).^2);
+    if(tempmin < min)
+      min = tempmin;
+      minidx = jter;
+    endif
+  endfor
+  idx(iter) = minidx;
+endfor
+  
 
 % =============================================================
 
